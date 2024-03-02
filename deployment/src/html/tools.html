@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dry Bean Analysis</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/Bean-logo.png" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./dashboard.html" class="text-nowrap logo-img">
+            <img src="../assets/images/logos/Bean-Ana.svg" width="180" alt="" />
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./dashboard.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./tools.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-presentation-analytics"></i>
+                </span>
+                <span class="hide-menu">Prediction Tool</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <header class="app-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <ul class="navbar-nav">
+            <li class="nav-item d-block d-xl-none">
+              <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
+                <i class="ti ti-menu-2"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <!--  Header End -->
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-lg-16 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body">
+                <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                  <div class="mb-3 mb-sm-0">
+                    <h5 class="card-title fw-semibold">Model Overview</h5>
+                  </div>
+                </div>
+                <div>
+                  <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+                    <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+                    <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+                    <script src="https://cdn.anychart.com/releases/v8/js/anychart-heatmap.min.js"></script>
+                    <script src="https://cdn.anychart.com/releases/v8/js/anychart-data-adapter.min.js"></script>
+                    <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" >
+                    <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" > 
+                    <style type="text/css">
+
+                    #container2 {
+                      width: 900px;
+                      height: 900px;
+                      margin: auto;
+                      }
+                          
+                    </style>
+                        
+                    <div id="container2"></div>
+                    <script>
+                          
+                      anychart.onDocumentReady(function () {
+                                // The data used in this sample can be obtained from the CDN
+                                // https://cdn.anychart.com/samples/heat-map-charts/heat-map-with-color-scale/data.json
+                        anychart.data.loadJsonFile(
+                          '/assets/json_cm_data.json',
+                          function (data) {
+                                    // Sets data
+                            var dataSet = anychart.data.set(data);
+                            var heatMapData = dataSet.mapAs({ x: 0, y: 1, heat: 2 });
+
+                            var title = '{{ title_model | safe}}'
+                          
+                                    // Creates Heat Map
+                            var chart = anychart.heatMap(heatMapData);
+                          
+                                    // Sets chart title
+                            chart.title(title);
+                          
+                                    // Sets selection mode for single selection.
+                            chart.interactivity().selectionMode('none');
+                            chart.labelsDisplayMode('drop');
+                          
+                                    // Sets range for colorScale
+                            var colorScale = chart.colorScale();
+                                    // Sets colors for all points
+                            colorScale.ranges([
+                              {
+                                from: 0,
+                                to: 0,
+                                color: '#e5f5fe'
+                              },
+                              {
+                                from: 1,
+                                to: 50,
+                                color: '#aee2fb'
+                              },
+                              {
+                                from: 50,
+                                to: 400,
+                                color: '#3085be'
+                              }
+                            ]);
+                            chart.colorScale(colorScale);
+                          
+                                    // Sets labels and maximum FontSize
+                            chart.labels().enabled(false);
+                          
+                                    // Sets chart settings and hover chart settings
+                            chart.stroke('#fff');
+                            chart
+                              .hovered()
+                              .stroke('6 #fff')
+                              .fill('#545f69')
+                              .labels({ fontColor: '#fff' });
+                          
+                                    // Sets legend
+                            chart
+                              .legend()
+                              .enabled(true)
+                              .align('center')
+                              .position('center-top')
+                              .itemsLayout('horizontal');
+                          
+                                    // Sets Axes TextFormatter
+                            chart.yAxis().stroke(null);
+                              chart
+                                .yAxis()
+                                .labels()
+                                .format(function () {
+                                  return this.tickValue;
+                                });
+                              chart.xAxis().stroke(null);
+                              chart
+                                .xAxis()
+                                .labels()
+                                .format(function () {
+                                  return this.tickValue;
+                                });
+                          
+                                    // Turns off ticks for axes
+                                chart.yAxis().ticks(false);
+                                chart.xAxis().ticks(false);
+                          
+                                    // Turns tooltips off
+                                chart.tooltip(false);
+                          
+                                    // set container id for the chart
+                                chart.container('container2');
+                          
+                                    // initiate chart drawing
+                                chart.draw();
+                                }
+                              );
+                            });
+                            
+                    </script>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body">
+                <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                  <div class="mb-3 mb-sm-0">
+                    <h5 class="card-title fw-semibold mb-4">Bean Class Prediction</h5>
+                  </div>
+                </div>
+                
+                <form action = "{{ url_for('predict')}}" method = "post">
+                  <div class="mb-3">
+                    <label class="form-label"> Area: </label>
+                    <input name="Area" id="Area" type="number" class="form-control" step="any" value="{{ request.form['Area']}}">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Perimeter: </label>
+                    <input name = "Perimeter" id = "Perimeter" type="number" class="form-control" step="any" value="{{ request.form['Perimeter']}}">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Major Axis Length: </label>
+                    <input name = "MajorAxisLength" id = "MajorAxisLength" type="number" class="form-control" step="any" value="{{ request.form['MajorAxisLength']}}">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Minor Axis Length: </label>
+                    <input name = "MinorAxisLength" id = "MinorAxisLength" type="number" class="form-control" step="any" value="{{ request.form['MinorAxisLength']}}">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Aspect Ration: </label>
+                    <input name = "AspectRation" id ="AspectRation" type="number" class="form-control" step="any" value="{{ request.form['AspectRation']}}">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Eccentricity: </label>
+                    <input name = "Eccentricity" id = "Eccentricity" type="number" class="form-control" step="any" value="{{ request.form['Eccentricity']}}">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Convex Area: </label>
+                    <input name = "ConvexArea" id = "ConvexArea" type="number" class="form-control" step="any" value="{{ request.form['ConvexArea']}}">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Equiv Diameter: </label>
+                    <input name = "EquivDiameter" id = "EquivDiameter" type="number" class="form-control" step="any" value="{{ request.form['EquivDiameter']}}">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Extent: </label>
+                    <input name = "Extent" id = "Extent" type="number" class="form-control" step="any" value="{{ request.form['Extent']}}">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Solidity: </label>
+                    <input name = "Solidity" id="Solidity" type="number" class="form-control" step="any" value="{{ request.form['Solidity']}}">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Roundness: </label>
+                    <input name = "roundness" id="roundness" type="number" class="form-control" step="any" value="{{ request.form['roundness']}}">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Compactness: </label>
+                    <input name = "Compactness" id="Compactness" type="number" class="form-control" step="any" value="{{ request.form['Compactness']}}">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Shape Factor 1: </label>
+                    <input name = "ShapeFactor1" id="ShapeFactor1" type="number" class="form-control" step="any" value="{{ request.form['ShapeFactor1']}}">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Shape Factor 2: </label>
+                    <input name = "ShapeFactor2" id="ShapeFactor2" type="number" class="form-control" step="any" value="{{ request.form['ShapeFactor2']}}">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Shape Factor 3: </label>
+                    <input name = "ShapeFactor3" id="ShapeFactor3" type="number" class="form-control" step="any" value="{{ request.form['ShapeFactor3']}}">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Shape Factor 4: </label>
+                    <input name = "ShapeFactor4" id="ShapeFactor4" type="number" class="form-control" step="any" value="{{ request.form['ShapeFactor4']}}">
+                  </div>
+                  <div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                  <div>
+                  <br>
+                  <div class="alert alert-success" role="alert">
+                    {{ prediction_output }}
+                  </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body">
+                <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                  <div class="mb-3 mb-sm-0">
+                    <h5 class="card-title fw-semibold">Features Importance</h5>
+                  </div>
+                </div>
+              <div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <canvas id="FeatureImp" width = "500" height = "975"></canvas>
+                <script>
+                    
+                  var labeling_Imp = '{{ labeling | safe }}'; 
+
+                  var fi = document.getElementById("FeatureImp").getContext("2d");
+                  var FeatureImp = new Chart(fi, {
+                    type: "bar",
+                    data: {
+                      labels: {{ labels_Imp | safe }},
+                      datasets: [
+                        {
+                          label: "" + this.labeling_Imp + "",
+                          data: {{ values_Imp | safe }}
+                        }
+                      ]
+                    },
+                    options: {
+                      indexAxis: 'y',
+                      responsive: true
+
+                    }
+                  });
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+</body>
+
+</html>

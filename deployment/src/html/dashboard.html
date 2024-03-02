@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dry Bean Analysis</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/Bean-logo.png" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./dashboard.html" class="text-nowrap logo-img">
+            <img src="../assets/images/logos/Bean-Ana.svg" width="180" alt="" />
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./dashboard.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./tools.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-presentation-analytics"></i>
+                </span>
+                <span class="hide-menu">Prediction Tool</span>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <header class="app-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <ul class="navbar-nav">
+            <li class="nav-item d-block d-xl-none">
+              <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
+                <i class="ti ti-menu-2"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <!--  Header End -->
+      <div class="container-fluid">
+        <!--  Row 1 -->
+        <div class="row">
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                  <div class="mb-3 mb-sm-0">
+                    <h5 class="card-title fw-semibold">Bean Type Overview</h5>
+                  </div>
+                </div>
+                <div>
+                  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                  <canvas id="DryBeanCount" width = "300" height = "400"></canvas>
+                  <script>
+                    var dbc = document.getElementById("DryBeanCount").getContext("2d");
+                    var DryBeanCount = new Chart(dbc, {
+                      type: "doughnut",
+                      data: {
+                        labels: {{ labels1 | safe }},
+                        datasets: [
+                          {
+                            label: "Count",
+                            data: {{ values1 | safe }}
+                          }
+                        ]
+                      },
+                      options: {
+                        responsive: false
+                      }
+                    });
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body">
+                <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                  <div class="mb-3 mb-sm-0">
+                    <h5 class="card-title fw-semibold">Bivariate Analysis</h5>
+                  </div>
+                </div>
+                <div>
+                  <form id  = "form1" action = "{{ url_for('analysis')}}" method = "post">
+                    <div class="mb-3">
+                      <h6 class="card-title mb-9 fw-semibold">Variables X: </h6>
+                        <select name = "Xvariable" class="form-select" >
+                          <option value="Area" {% if previous_data_xvar == "Area"%} selected {% endif %}>Area</option>
+                          <option value="Perimeter" {% if previous_data_xvar == "Perimeter"%} selected {% endif %}>Perimeter</option>
+                          <option value="MajorAxisLength" {% if previous_data_xvar == "MajorAxisLength"%} selected {% endif %}>Major Axis Length</option>
+                          <option value="MinorAxisLength" {% if previous_data_xvar == "MinorAxisLength"%} selected {% endif %}>Minor Axis Length</option>
+                          <option value="AspectRation" {% if previous_data_xvar == "AspectRation"%} selected {% endif %}>Aspect Ration</option>
+                          <option value="ConvexArea" {% if previous_data_xvar == "ConvexArea"%} selected {% endif %}>Convex Area</option>
+                          <option value="EquivDiameter" {% if previous_data_xvar == "EquivDiameter"%} selected {% endif %}>Equiv Diameter</option>
+                          <option value="Extent" {% if previous_data_xvar == "Extent"%} selected {% endif %}>Extent</option>
+                          <option value="Solidity" {% if previous_data_xvar == "Solidity"%} selected {% endif %}>Solidity</option>
+                          <option value="roundness" {% if previous_data_xvar == "roundness"%} selected {% endif %}>Roundness</option>
+                          <option value="Compactness" {% if previous_data_xvar == "Compactness"%} selected {% endif %}>Compactness</option>
+                          <option value="ShapeFactor1" {% if previous_data_xvar == "ShapeFactor1"%} selected {% endif %}>ShapeFactor1</option>
+                          <option value="ShapeFactor2" {% if previous_data_xvar == "ShapeFactor2"%} selected {% endif %}>ShapeFactor2</option>
+                          <option value="ShapeFactor3" {% if previous_data_xvar == "ShapeFactor3"%} selected {% endif %}>ShapeFactor3</option>
+                          <option value="ShapeFactor4" {% if previous_data_xvar == "ShapeFactor4"%} selected {% endif %}>ShapeFactor4</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                      <h6 class="card-title mb-9 fw-semibold">Vatiables Y: </h6>
+                        <select name = "Yvariable" class="form-select" >
+                          <option value="Area" {% if previous_data_yvar == "Area"%} selected {% endif %}>Area</option>
+                          <option value="Perimeter" {% if previous_data_yvar == "Perimeter"%} selected {% endif %}>Perimeter</option>
+                          <option value="MajorAxisLength" {% if previous_data_yvar == "MajorAxisLength"%} selected {% endif %}>Major Axis Length</option>
+                          <option value="MinorAxisLength" {% if previous_data_yvar == "MinorAxisLength"%} selected {% endif %}>Minor Axis Length</option>
+                          <option value="AspectRation" {% if previous_data_yvar == "AspectRation"%} selected {% endif %}>Aspect Ration</option>
+                          <option value="ConvexArea" {% if previous_data_yvar == "ConvexArea"%} selected {% endif %}>Convex Area</option>
+                          <option value="EquivDiameter" {% if previous_data_yvar == "EquivDiameter"%} selected {% endif %}>Equiv Diameter</option>
+                          <option value="Extent" {% if previous_data_yvar == "Extent"%} selected {% endif %}>Extent</option>
+                          <option value="Solidity" {% if previous_data_yvar == "Solidity"%} selected {% endif %}>Solidity</option>
+                          <option value="roundness" {% if previous_data_yvar == "roundness"%} selected {% endif %}>Roundness</option>
+                          <option value="Compactness" {% if previous_data_yvar == "Compactness"%} selected {% endif %}>Compactness</option>
+                          <option value="ShapeFactor1" {% if previous_data_yvar == "ShapeFactor1"%} selected {% endif %}>ShapeFactor1</option>
+                          <option value="ShapeFactor2" {% if previous_data_yvar == "ShapeFactor2"%} selected {% endif %}>ShapeFactor2</option>
+                          <option value="ShapeFactor3" {% if previous_data_yvar == "ShapeFactor3"%} selected {% endif %}>ShapeFactor3</option>
+                          <option value="ShapeFactor4" {% if previous_data_yvar == "ShapeFactor4"%} selected {% endif %}>ShapeFactor4</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                      <button name = "submit" type="submit" class="btn btn-primary m-1" value = "formbi" >Result</button>
+                    </div>
+                  </form>
+                </div>   
+                <div>
+                  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                  <canvas id="MultiV" width = "700" height = "500"></canvas>
+                  <script>
+                    var label_scat = '{{ labeling_scat | safe}}';
+                    var varx_ = {{var_x | safe}};
+                    var vary_ = {{var_y | safe}};
+                    function parse_data(varx , vary)
+                    {
+                      var tmp = [];
+                      for (let i = 0; i < varx.length; i++)
+                      {
+                        var x;
+                        var y;
+                        tmp[i] = {x: varx.at(i), y: vary.at(i)};
+                      }
+                      return tmp;
+                    }
+                    var data_ = parse_data(varx_, vary_);
+                    
+                    var mv = document.getElementById("MultiV").getContext("2d");
+                    var MultiV = new Chart(mv, {
+                      type: "scatter",
+                      data: {
+                        datasets: [
+                          {
+                            label: "" + this.label_scat + "",
+                            data: data_
+                          }
+                        ]
+                      },
+                      options: {
+                        responsive: false
+                      }
+                    });
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <!-- Yearly Breakup -->
+            <div class="card overflow-hidden">
+              <div class="card-body p-4">
+                <h5 class="card-title mb-9 fw-semibold">Data Distribution - Univariate Analysis</h5>
+                  <div>
+                    <form id = "form2" action = "{{ url_for('analysis')}}" method = "post">
+                      <div class="mb-3">
+                        <h6 class="card-title mb-9 fw-semibold">Type of Bean: </h6>
+                          <select id = "beanid" name = "beans" class="form-select" >
+                            <option value="DERMASON" {% if previous_data_bean == "DERMASON"%} selected {% endif %} >Dermason</option>
+                                <option value="SIRA"  {% if previous_data_bean == "SIRA"%} selected {% endif %}>Sira</option>
+                                <option value="SEKER" {% if previous_data_bean == "HOROZ"%} selected {% endif %}>Horoz</option>
+                                <option value="CALI" {% if previous_data_bean == "CALI"%} selected {% endif %}>Cali</option>
+                                <option value="BARBUNYA" {% if previous_data_bean == "BARBUNYA"%} selected {% endif %}>Barbunya</option>
+                                <option value="BOMBAY" {% if previous_data_bean == "BOMBAY"%} selected {% endif %}>Bombay</option>
+                                <option value="ALL" {% if previous_data_bean == "ALL"%} selected {% endif %}>All Beans</option>
+                              </select>
+                      </div>
+                      <div class="mb-3">
+                        <h6 class="card-title mb-9 fw-semibold">Type of Features: </h6>
+                          <select id = "featuresid" name = "features" class="form-select" >
+                            <option value="Area" {% if previous_data_parameter == "Area"%} selected {% endif %}>Area</option>
+                            <option value="Perimeter" {% if previous_data_parameter == "Perimeter"%} selected {% endif %}>Perimeter</option>
+                            <option value="MajorAxisLength" {% if previous_data_parameter == "MajorAxisLength"%} selected {% endif %}>Major Axis Length</option>
+                            <option value="MinorAxisLength" {% if previous_data_parameter == "MinorAxisLength"%} selected {% endif %}>Minor Axis Length</option>
+                            <option value="AspectRation" {% if previous_data_parameter == "AspectRation"%} selected {% endif %}>Aspect Ration</option>
+                            <option value="ConvexArea" {% if previous_data_parameter == "ConvexArea"%} selected {% endif %}>Convex Area</option>
+                            <option value="EquivDiameter" {% if previous_data_parameter == "EquivDiameter"%} selected {% endif %}>Equiv Diameter</option>
+                            <option value="Extent" {% if previous_data_parameter == "Extent"%} selected {% endif %}>Extent</option>
+                            <option value="Solidity" {% if previous_data_parameter == "Solidity"%} selected {% endif %}>Solidity</option>
+                            <option value="roundness" {% if previous_data_parameter == "roundness"%} selected {% endif %}>Roundness</option>
+                            <option value="Compactness" {% if previous_data_parameter == "Compactness"%} selected {% endif %}>Compactness</option>
+                            <option value="ShapeFactor1" {% if previous_data_parameter == "ShapeFactor1"%} selected {% endif %}>ShapeFactor1</option>
+                            <option value="ShapeFactor2" {% if previous_data_parameter == "ShapeFactor2"%} selected {% endif %}>ShapeFactor2</option>
+                            <option value="ShapeFactor3" {% if previous_data_parameter == "ShapeFactor3"%} selected {% endif %}>ShapeFactor3</option>
+                            <option value="ShapeFactor4" {% if previous_data_parameter == "ShapeFactor4"%} selected {% endif %}>ShapeFactor4</option>
+                          </select>
+                      </div>
+                      <div class="mb-3">
+                        <button name = "submit" type="submit" class="btn btn-primary m-1" value = "formuni" >Result</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div>
+                  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                  <canvas id="BeanDistribution" width = "1100" height = "1100"></canvas>
+                  <script>
+                    
+                    var label1 = '{{ labeling | safe }}'; 
+
+                    var bd = document.getElementById("BeanDistribution").getContext("2d");
+                    var BeanDistribution = new Chart(bd, {
+                      type: "bar",
+                      data: {
+                        labels: {{ labels2 | safe }},
+                        datasets: [
+                          {
+                            label: "" + this.label1 + "",
+                            data: {{ values2 | safe }}
+                          }
+                        ]
+                      },
+                      options: {
+                        indexAxis: 'y',
+                        responsive: true
+
+                      }
+                    });
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+              <div class="col-lg-12">
+                <!-- Yearly Breakup -->
+                <div class="card overflow-hidden">
+                  <div class="card-body p-4">
+                    <h5 class="card-title mb-9 fw-semibold">Correlation Analysis</h5>  
+                    <div>
+                      <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+                          <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+                          <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+                          <script src="https://cdn.anychart.com/releases/v8/js/anychart-heatmap.min.js"></script>
+                          <script src="https://cdn.anychart.com/releases/v8/js/anychart-data-adapter.min.js"></script>
+                          <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" >
+                          <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" > 
+                          <style type="text/css">
+
+                            #container1 {
+                              width: 900px;
+                              height: 900px;
+                              margin: auto;
+                            }
+                          
+                          </style>
+                        
+                          <div id="container1"></div>
+                          <script>
+                          
+                              anychart.onDocumentReady(function () {
+                                // The data used in this sample can be obtained from the CDN
+                                // https://cdn.anychart.com/samples/heat-map-charts/heat-map-with-color-scale/data.json
+                                anychart.data.loadJsonFile(
+                                  '/assets/json_data.json',
+                                  function (data) {
+                                    // Sets data
+                                    var dataSet = anychart.data.set(data);
+                                    var heatMapData = dataSet.mapAs({ x: 0, y: 1, heat: 2 });
+                          
+                                    // Creates Heat Map
+                                    var chart = anychart.heatMap(heatMapData);
+                          
+                                    // Sets chart title
+                                    chart.title('Bean Features Correlations');
+                          
+                                    // Sets selection mode for single selection.
+                                    chart.interactivity().selectionMode('none');
+                                    chart.labelsDisplayMode('drop');
+
+                                    chart.xScroller(true);
+                                    chart.yScroller(true);
+
+                                    // Sets starting zoom for Axes
+                                    chart.xZoom().setToPointsCount(8);
+                                    chart.yZoom().setToPointsCount(6);
+                          
+                                    // Sets range for colorScale
+                                    var colorScale = chart.colorScale();
+                                    // Sets colors for all points
+                                    colorScale.ranges([
+                                      {
+                                        from: -1.0,
+                                        to: -0.5,
+                                        name: 'Strong Negative Correlation',
+                                        color: '#e5f5fe'
+                                      },
+                                      {
+                                        from: -0.5,
+                                        to: 0,
+                                        name: 'Weak Negative Correlation',
+                                        color: '#aee2fb'
+                                      },
+                                      {
+                                        from: 0,
+                                        to: 0.5,
+                                        name: 'Weak Positive Correlation',
+                                        color: '#69bce8'
+                                      },
+                                      {
+                                        from: 0.5,
+                                        to: 1.0,
+                                        name: 'Strong Positive Correlation',
+                                        color: '#3085be'
+                                      }
+                                    ]);
+                                    chart.colorScale(colorScale);
+                          
+                                    // Sets labels and maximum FontSize
+                                    chart.labels().enabled(false);
+                          
+                                    // Sets chart settings and hover chart settings
+                                    chart.stroke('#fff');
+                                    chart
+                                      .hovered()
+                                      .stroke('6 #fff')
+                                      .fill('#545f69')
+                                      .labels({ fontColor: '#fff' });
+                          
+                                    // Sets legend
+                                    chart
+                                      .legend()
+                                      .enabled(true)
+                                      .align('center')
+                                      .position('center-top')
+                                      .itemsLayout('horizontal');
+                          
+                                    // Sets Axes TextFormatter
+                                    chart.yAxis().stroke(null);
+                                    chart
+                                      .yAxis()
+                                      .labels()
+                                      .format(function () {
+                                        return this.tickValue;
+                                      });
+                                    chart.xAxis().stroke(null);
+                                    chart
+                                      .xAxis()
+                                      .labels()
+                                      .format(function () {
+                                        return this.tickValue;
+                                      });
+                          
+                                    // Turns off ticks for axes
+                                    chart.yAxis().ticks(false);
+                                    chart.xAxis().ticks(false);
+                          
+                                    // Turns tooltips off
+                                    chart.tooltip(false);
+                          
+                                    // set container id for the chart
+                                    chart.container('container1');
+                          
+                                    // initiate chart drawing
+                                    chart.draw();
+                                  }
+                                );
+                              });
+                            
+                          </script>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+      </div>
+    </div>
+  </div>
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+</body>
+
+</html>
