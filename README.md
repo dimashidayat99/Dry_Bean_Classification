@@ -188,7 +188,7 @@ The deployment of the model was built using Flask app that is run locally on my 
 
 The demo of the website:
 
-<video src='https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/Demo.mp4' width=300/>
+<video src='https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/Demo.mp4' width=180/>
     
 # Conclusion
 Throughout this project, the objectives set at the beginning has been successfully achieved, with a focus on contributing to the future of agriculture and smart farming practices. Some of the noteworthy progress include achieving a higher accuracy for classification than the past researches, at 0.9541 using the SVM hyperparameter-tuned model. Furthermore, from the best models tested, the feature importance has been recognized. In ascending order are ascending order are Extent, ShapeFactor2, Solidity, ShapeFactor3, Area, ConvexArea, Compactness, MinorAxisLength, Perimeter, EquiveDiameter, roundness,ShapeFactor4, MajorAxisLength, ShapeFactor1, AspectRation and Eccentricity. Lastly, in order to successfully contribute to the agriculturecommunity, a deployment structure has been identified and clearly defined, through the use of a web application which allows ease of access. As such, the working structure and wireframe has been developed for implementation.
