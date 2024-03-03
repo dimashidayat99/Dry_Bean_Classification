@@ -21,7 +21,7 @@ Determining the importance of features extracted from images is crucial for impr
 
 # Dataset
 
-The [dataset](ttps://www.kaggle.com/datasets/muratkokludataset/dry-bean-dataset) used in this study is sourced from Kaggle and consists of a collection of morphological attributes of dry beans. For the classification model, images of 13,611 grains of 7 different registered dry beans were taken with a high-resolution camera. Beanimages obtained by the computer vision system were subjected to segmentation and feature extraction stages, and a total of 16 features; 12 dimensions and 4 shape forms, were obtained from the grains. It provides valuable information for developing a Dry Bean Classification System that aims to optimize cultivation practices and provide personalized classification for dry bean farmers.
+The [dataset](https://www.kaggle.com/datasets/muratkokludataset/dry-bean-dataset) used in this study is sourced from Kaggle and consists of a collection of morphological attributes of dry beans. For the classification model, images of 13,611 grains of 7 different registered dry beans were taken with a high-resolution camera. Beanimages obtained by the computer vision system were subjected to segmentation and feature extraction stages, and a total of 16 features; 12 dimensions and 4 shape forms, were obtained from the grains. It provides valuable information for developing a Dry Bean Classification System that aims to optimize cultivation practices and provide personalized classification for dry bean farmers.
 
 The dataset contains observations of dry beans, with each instance represented by various numerical attributes. The included attributes are as follows:
 
