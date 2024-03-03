@@ -1,4 +1,5 @@
 # Introduction 
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/images/beans.jpg)
 
 Crop Classification is the core concept of smart farming that helps to improve traditional farming techniques and enables more precise and efficient cultivation methods. Improving crop classification involves accurate data collection, advanced data analysis and modeling, integration of multiple influencing factors, and continuous learning and adaptation. Farmers are influenced by smart farming due to its potential to increase productivity and  efficiency, reduce resource wastage, enable precise decision-making, optimize resource allocation, and improve overall profitability. The classification of dry bean varieties based on parameters extracted through image processing techniques poses several challenges that require further investigation. This research aims to address two key problem areas in this domain: feature importance and hyperparameter tuning. By addressing these issues, this study aims to enhance the accuracy and robustness of dry bean classification models.
 
@@ -50,15 +51,16 @@ understanding of the morphological determinants of dry bean quality and provide 
 solutions to optimize dry bean farming practices. The following image shows the different
 types of dry bean shapes and sizes.
 
-![]()
 
 # Architecture
+
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/images/FrameworkDiagram.png)
 
 Data architecture involves starting with the data source, the dried beans dataset, and
 understanding the schema and format of the dataset. Then apply data preprocessing
 techniques to clean the data, handle missing values, outliers, and duplicates, and transform it into a suitable format for analysis. This step ensures the quality and integrity of the data and makes it ready for further processing.The data preparation phase focuses on splitting the data into training and testing sets and performing cross-validation or training-validation splits for model evaluation. Data architecture ensures proper partitioning and organisation of data subsets to enable effective model training and scoring. During the data modelling phase, this architecture makes it easy to integrate different machine learning models into your pipeline. This enables seamless data flow between models and ensures compatibility between input data and model requirements. Performance metrics such as accuracy, precision, recall, and F1 score as well as fitting analysis are calculated and analysed within the data architecture. This allows efficient computation and comparison of model performance, providing insight into the effectiveness of classification models. The data architecture also supports hyperparameter tuning to test and evaluate different combinations of parameters. This process optimises model performance and identifies the best set of hyperparameters for the selected model. Finally, data architecture plays a key role in providing the best model for real-world applications. Supports model integration into various deployment environments, including: An application by ensuring smooth flow and transformation of input data for classification. Overall, the data architecture of the dry bean classification pipeline is responsible for effectively organising, processing, and utilising data at various stages of the classification process, ultimately resulting in accurate and reliable predictions.
 
-![]()
+
 
 # Findings
 
@@ -66,7 +68,7 @@ techniques to clean the data, handle missing values, outliers, and duplicates, a
 ### Univariate Analysis
 #### Distribution of Independent Variables
 
-![]()
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/univariate_analysis.png)
 
 1. Area - the distribution for Area is positively skewed. Most of the data lies around 30000 to 80000 with the mode of 40000 in area. While some of the data have around 150000 to 200000 in area which indicate as outliers in area data.
 2. Perimeter - the distribution of Perimeter is positively skewed with two modes of non symetric bimodal distribution. Most of the data lies in around 500 to 1250 with the first mode of the distribtion is at around 700 while second mode is around 1000. A few data is at around 1250 to 2000 which indicate the outliers in perimeter data.
@@ -87,25 +89,25 @@ techniques to clean the data, handle missing values, outliers, and duplicates, a
     
 #### Distribution of Dependent Variable
 
-![]()
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/class_distribution.png)
 
 Upon analysing the dataset, it is evident that there has been no significant change in the distribution of class variables and sample size. However, a closer look reveals that the dataset suffers from an imbalance issue. The majority class is Dermason while Bombay represents the minority class.This imbalance can have serious implications on any analysis or modelling performed on this data. It may lead to biassed results and inaccurate predictions, especially for the underrepresented classes such as Bombay. Therefore, it is crucial to address this issue by employing techniques such as oversampling or undersampling to balance out the classes.
 
 #### Outliers Analysis
 
-![]()
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/outliers.png)
 
 There are 1129 identified outlier data points. These outliers are predominantly found in the minority class of Bombay, indicating that there may be some underlying factors contributing to their presence. While removing these outliers would result in a reduction of the dataset. Therefore, the decision is to retain them for the time being. The reasoning behind this decision is that if the outliers were to remove them and subsequently experience low accuracy with the models, it would be difficult to determine whether these issues were due to the removal of important data points or other factors entirely. However, should encounter such problems with the models down the linea and will certainly consider removing these outliers as an option. Until then, they will remain part of the dataset but will not be given undue weight or consideration during analysis.
 
 ### Multivariate Analysis
 #### Scatter Plot Among Variables
-![]()
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/multivariate_analysis.png)
 
 The scatter plot matrix shows the relationship between variables in the dataset. This plot can shows the linearity and non linearity as well as the first picture of how well these variable is correlated with each other. For instances, Extend, Solidity, Roundess, ShapeFactor2 and ShapeFactor4 shows no correlations to all other variables since all the data point is scattered. For linear examples, the ConvexArea with Area, EquivDiameter with Area and ShapeFactor3 with Compactness have shown the strong linearity relationship while EquivDiameter with Perimeter, MajorAxisLength with EquivDiameter, Perimeter with MajorAxisLength and EquiveDiameter with MinorAxisLength has shown some degree of linearlity (weak linear relationship). For non linear examples, it can been seen that Area with Perimeter, Eccentricity with AspectRation, Compactness with AspectRation and MinorAxisLength with ShapeFactor1 shows the strong non linear relationship while ShapeFactor2 with MajorAxisLength, ShapeFactor1 with Perimeter, Area with ShapeFactor2 and ShapeFactor1 with ConvexArea have shown some degree of non linearity (weak non linear relationship).
 
 #### Correlation Among Variables
 
-![]()
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/correlation_heatmap.png)
 
 1. Area - Strong positive correlation: Perimeter, MajorAxisLength, MinorAxisLength, ConvexArea, and EquivDimater. Strong negative correlation: ShapeFactor1 and ShapeFactor2.
 2. Perimeter - Strong positive correlation: Area, MajorAxisLength, MinorAxisLength, ConvexArea and EquivDimater. Strong negative correlation: Roundness, ShapeFactor1, ShapeFactor2 and Class.
@@ -126,7 +128,7 @@ The scatter plot matrix shows the relationship between variables in the dataset.
 17. Class - Strong positive correlation: None. Strong negative correlation: None.
 
 #### Correlation with Dependent Variables
-![]()
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/correlation_with_class.png)
 
 In order to gain a deeper understanding of the relationship between various features and the target variable "Class", a thorough analysis is conducted. This involves calculating the correlation coefficient for each feature with respect to Class, which provides valuable insights into their respective strengths of association. From the correlation analysis, not all features are created equal when it comes to their correlation with Class. Some, such as Extent, Eccentricity, AspectRatio, Compactness, ShapeFactor3 and ShapeFactor4 exhibit weaker
 correlations than others. While still potentially useful in certain contexts, these features may not be as reliable predictors of Class as those that demonstrate stronger associations. 
@@ -137,7 +139,13 @@ correlations than others. While still potentially useful in certain contexts, th
 For Data Modelling, it is divided into two different types of model for machine learning which is classical machine learning and modern machine learning. For classical machine learning models, 10-fold cross-validation was performed using the training data. This means that the training data was split into 10 equal parts called folds. Each fold alternately serves as the validation set, while the other nine folds are combined to form the training set. By rotating the folds and repeating this process 10 times. This approach gave a better understanding of how well the model performed on different subsets of the training data. The classic machine learning chosen were Logistic Regression, Support Vector Machine (SVM), Gaussian Naïve Bayes, K Nearest Neighbour(K-NN), Extra Tree, Random Forest, Decision Tree, LightGBM and XGBoost. The modern machine learning used neural network consists of four layers. An input layer, three hidden layers, and an output layer. The number of units in the input layer is determined by the input dimension, which represents the number of columns of input data which in this case is 16. Each hidden layer has 64 neurons and uses a Rectified Linear Unit (ReLU) activation function that introduces nonlinearity into the network. This helps the model learn complex relationships and patterns in the data. The output layer has 7 neurons, indicating that the model is designed for a multiclass classification problem with 7 possible classes of Dry Beans. The output layer uses a softmax activation function that produces probability distributions between classes. This allows the model to assign probabilities to each class of Dry Beans and make predictions based on the highest probabilities.
 
 ### Evaluation
-![]()
+
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/logistic_regresson.png)  |  ![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/decision_tree.png)
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/knn.png)  |  ![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/extra_tree.png)
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/gaussian_nb.png)  |  ![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/random_forest.png)
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/svm.png)  |  ![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/xgboost.png)
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/lightgbm.png)  |  ![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/neural_network.png)
+
 For logistic regression, Gaussian Naive Bayes, SVM and Neural Network, the accuracy curves show consistently high accuracy across the folds for both train data and validation data. This shows that these models can learn effectively from the training data and perform well on new and unfamiliar data. Therefore, these are considered well-fitting models. On the other hand, the KNN, Decision Tree, Random Forest, Xgboost, and Extra-Tree models showed variation in accuracy from convolution to convolution. Accuracy curves showed higher accuracy for training data compared to validation data. This suggests that these models are overfitted, focusing too much on specific examples in the training data and not translating well to new, unseen data. In summary, from the accuracy plots, logistic regression, Gaussian Naive Bayes, and SVM were found to be suitable models as they consistently achieved high accuracy on both training and validation data. However, KNN, decision tree, random forest, Xgboost, and extra-tree models were overfitted because they improved in accuracy on the training data but decreased in accuracy on the validation data. These insights will help you understand the strengths and weaknesses of each model and help you choose the right model for the classification of Dry Beans.
 
 ![]()
