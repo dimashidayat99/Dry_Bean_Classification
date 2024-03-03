@@ -144,29 +144,42 @@ For Data Modelling, it is divided into two different types of model for machine 
   <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/logistic_regresson.png" width="300" />
   <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/decision_tree.png" width="300" /> 
 </p>
+
 <p align="middle">
   <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/knn.png" width="300" />
   <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/extra_tree.png" width="300" /> 
 </p>
-![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/logistic_regresson.png)  |  ![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/decision_tree.png)
-![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/knn.png)  |  ![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/extra_tree.png)
-![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/gaussian_nb.png)  |  ![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/random_forest.png)
-![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/svm.png)  |  ![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/xgboost.png)
-![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/lightgbm.png)  |  ![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/neural_network.png)
+
+<p align="middle">
+  <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/gaussian_nb.png" width="300" />
+  <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/random_forest.png" width="300" /> 
+</p>
+
+<p align="middle">
+  <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/svm.png" width="300" />
+  <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/xgboost.png" width="300" /> 
+</p>
+
+<p align="middle">
+  <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/lightgbm.png" width="300" />
+  <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/neural_network.png" width="300" /> 
+</p>
 
 For logistic regression, Gaussian Naive Bayes, SVM and Neural Network, the accuracy curves show consistently high accuracy across the folds for both train data and validation data. This shows that these models can learn effectively from the training data and perform well on new and unfamiliar data. Therefore, these are considered well-fitting models. On the other hand, the KNN, Decision Tree, Random Forest, Xgboost, and Extra-Tree models showed variation in accuracy from convolution to convolution. Accuracy curves showed higher accuracy for training data compared to validation data. This suggests that these models are overfitted, focusing too much on specific examples in the training data and not translating well to new, unseen data. In summary, from the accuracy plots, logistic regression, Gaussian Naive Bayes, and SVM were found to be suitable models as they consistently achieved high accuracy on both training and validation data. However, KNN, decision tree, random forest, Xgboost, and extra-tree models were overfitted because they improved in accuracy on the training data but decreased in accuracy on the validation data. These insights will help you understand the strengths and weaknesses of each model and help you choose the right model for the classification of Dry Beans.
 
-![]()
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/eval.png)
+
 All the models achieve accuracy higher than 90% which means all models performed good enough. However, from the fitting analysis, some models are overfitting such as KNN, ExtraTree, RandomForest, DecisionTree, Lightgbm and Xgboost. The remaining well fitted model is Logistic regression, SVM, GaussianNaiveBayes and Neural Network. Hyperparameter tuning for these 4 models are computationally expensive. Therefore, We select only 1 best model and tune the model to improve the accuracy further. Among these models, SVM shows the highest accuracy. Therefore, SVM will be tuned.
 
 ### Hyperparameter Tuning
 
-![]()
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/svm_confusion_matrix.png)
 
 After hyperparamter tuning of SVM model, the accuracy of SVM increases from 0.9464 to 0.9541. The difference is very small but it still performed well for short execution time for hyperparameter tuning.
 
 ### Features Importance
 
+![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/feature_importance.png)
 The feature importance is obtained based on the tuned SVM model. The features importances in ascending order are Extent, ShapeFactor2, Solidity, ShapeFactor3, Area, ConvexArea, Compactness, MinorAxisLength, Perimeter, EquiveDiameter, roundness,ShapeFactor4, MajorAxisLength, ShapeFactor1, AspectRation and Eccentricity.
 
 # Deployment
