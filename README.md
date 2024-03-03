@@ -140,13 +140,13 @@ For Data Modelling, it is divided into two different types of model for machine 
 
 ### Evaluation
 
-<p float="left">
-  <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/logistic_regresson.png" width="150" />
-  <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/decision_tree.png" width="150" /> 
+<p align="middle">
+  <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/logistic_regresson.png" width="300" />
+  <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/decision_tree.png" width="300" /> 
 </p>
-<p float="left">
-  <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/knn.png" width="150" />
-  <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/extra_tree.png" width="150" /> 
+<p align="middle">
+  <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/knn.png" width="300" />
+  <img src="https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/extra_tree.png" width="300" /> 
 </p>
 ![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/logistic_regresson.png)  |  ![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/decision_tree.png)
 ![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/knn.png)  |  ![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/result/extra_tree.png)
