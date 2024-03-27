@@ -1,6 +1,8 @@
-# Introduction 
+# BeanSorter: Simplifying Dry Bean Classification for Farmers
+ 
 ![](https://github.com/dimashidayat99/Dry_Bean_Classification/blob/main/images/beans.jpg)
 
+# Introduction
 Crop Classification is the core concept of smart farming that helps to improve traditional farming techniques and enables more precise and efficient cultivation methods. Improving crop classification involves accurate data collection, advanced data analysis and modeling, integration of multiple influencing factors, and continuous learning and adaptation. Farmers are influenced by smart farming due to its potential to increase productivity and  efficiency, reduce resource wastage, enable precise decision-making, optimize resource allocation, and improve overall profitability. The classification of dry bean varieties based on parameters extracted through image processing techniques poses several challenges that require further investigation. This research aims to address two key problem areas in this domain: feature importance and hyperparameter tuning. By addressing these issues, this study aims to enhance the accuracy and robustness of dry bean classification models.
 
 
@@ -12,13 +14,13 @@ Determining the importance of features extracted from images is crucial for impr
 
 1. What is the impact of feature importance analysis and hyperparameter tuning on the classification accuracy of dry bean varieties based on parameters extracted from image processing techniques?
 
-2. How does a mobile app for dry bean classification based on image processing techniques enhance accessibility and usability for farmers and agricultural practitioners?
+2. How does a web app for dry bean classification based on image processing techniques enhance accessibility and usability for farmers and agricultural practitioners?
 
 # Research Objectives
 
 1. To improve classification accuracy, this research aims to identify key features extracted from dry bean images and evaluate the impact of hyperparameter tuning on classification model performance.
 
-2. To develop a user-friendly and accessible mobile app for accurately classifying dry bean varieties using image processing techniques, providing a practical tool to optimize cultivation practices for farmers and agricultural practitioners.
+2. To develop a user-friendly and accessible web app for accurately classifying dry bean varieties using image processing techniques, providing a practical tool to optimize cultivation practices for farmers and agricultural practitioners.
 
 # Dataset
 
